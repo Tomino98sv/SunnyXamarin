@@ -11,7 +11,7 @@
             </Grid.RowDefinitions>
 
             <Grid Grid.Row="0" HorizontalOptions="FillAndExpand">
-                <Button TextColor="Black" Text="Google login" Clicked="OnGoogleLoginClick" BackgroundColor="Azure"/>
+                <Button TextColor="White" Text="Google login" Clicked="OnGoogleLoginClick" BackgroundColor="Red"/>
             </Grid>
             
         </Grid>
