@@ -40,7 +40,34 @@ namespace SunnyXamarin.Services
 
             return null;
 
+        }
 
+        public async Task<WeatherModel> getWeatherByCity(string cityZip, string countryCode)
+        {
+            try
+            {
+                var request = new HttpRequestMessage();
+                string url = baseURL + "?zip=" + cityZip + "," + countryCode + "&" + apiKey;
+                request.RequestUri = new Uri(url);
+                request.Method = HttpMethod.Get;
+                request.Headers.Add("Accept", "application/json");
+                var client = new HttpClient();
+                HttpResponseMessage response = await client.SendAsync(request);
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    HttpContent content = response.Content;
+                    var json = await content.ReadAsStringAsync();
+                    WeatherModel weather = JsonConvert.DeserializeObject<WeatherModel>(json);
+
+                    return weather;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+
+            return null;
 
         }
 

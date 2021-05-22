@@ -8,5 +8,5 @@
   <!--Pages can be added as references or inline-->
     <sunnyxamarin:ProfilePage Title="Tab 1" />
     <sunnyxamarin:WeatherLocation Title="Tab 2" />
-    <sunnyxamarin:ProfilePage Title="Tab 3" />
+    <sunnyxamarin:WeatherCity Title="Tab 3" />
 </TabbedPage>
