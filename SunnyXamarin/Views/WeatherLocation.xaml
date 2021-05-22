@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SunnyXamarin.WeatherLocation">
+    <ContentPage.Content>
+        <StackLayout>
+            <Button x:Name="CheckInButton" Clicked="CheckInButton_Clicked"  Text="Check"></Button>
+
+            <Label x:Name="lblLon" FontSize="Large" Text="Longitude : "/>
+            <Label></Label>
+            <Label x:Name="lblLat" FontSize="Large" Text="Latitude : "/>
+            <Label></Label>
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

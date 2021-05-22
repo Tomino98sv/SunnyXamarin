@@ -47,5 +47,7 @@
 			<string>Editor</string>
 		</dict>
 	</array>
+  <key>NSLocationWhenInUseUsageDescription</key>
+  <string>We need to verify your location when you check-in.</string>
 </dict>
 </plist>
