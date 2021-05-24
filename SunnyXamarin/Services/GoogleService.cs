@@ -116,7 +116,8 @@ namespace SunnyXamarin
                 Application.Current.Properties.Add("EmailAddress", user.Email);
                 Application.Current.Properties.Add("ProfilePicture", user.Picture);
 
-                Application.Current.MainPage.Navigation.PushAsync(new ProfilePage(), true);
+                Application.Current.MainPage.Navigation.PopAsync();
+                Application.Current.MainPage.Navigation.PushAsync(new TabbedPage1(), true);
             }
         }
     }

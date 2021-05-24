@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SunnyXamarin.Services;
+using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -9,7 +10,7 @@ namespace SunnyXamarin
         public App()
         {
             InitializeComponent();
-
+            DependencyService.Register<IOpenWeatherService, OpenWeatherService>();
             MainPage = new NavigationPage(new MainPage());
         }
 
