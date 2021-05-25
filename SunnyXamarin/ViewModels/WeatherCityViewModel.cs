@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Text;
-using System.Threading.Tasks;
-using Plugin.Permissions;
-using Plugin.Permissions.Abstractions;
+﻿using System.ComponentModel;
 using SunnyXamarin.Models;
 using SunnyXamarin.Services;
-using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace SunnyXamarin.ViewModels

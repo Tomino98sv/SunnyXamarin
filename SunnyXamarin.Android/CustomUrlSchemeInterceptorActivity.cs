@@ -2,7 +2,6 @@
 using Android.Content;
 using Android.OS;
 using System;
-using SunnyXamarin;
 
 namespace SunnyXamarin.Droid
 {
@@ -21,6 +20,16 @@ namespace SunnyXamarin.Droid
             var uri = new Uri(Intent.Data.ToString());
 
             SunnyXamarin.AuthenticationState.Authenticator.OnPageLoading(uri);
+
+            SunnyXamarin.AuthenticationState.GoogleSignInEventCompletion += OnGoogleSignInComplete;
+
+        }
+
+        protected void OnGoogleSignInComplete(object sender, EventArgs e)
+        {
+            var intent = new Intent(this, typeof(MainActivity));
+            intent.SetFlags(ActivityFlags.ClearTop | ActivityFlags.SingleTop);
+            StartActivity(intent);
 
             Finish();
         }

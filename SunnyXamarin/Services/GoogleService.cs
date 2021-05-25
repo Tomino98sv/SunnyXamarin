@@ -1,12 +1,9 @@
 ﻿using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Text;
 using Xamarin.Auth;
 using Xamarin.Forms;
-using SunnyXamarin;
 
 namespace SunnyXamarin
 {
@@ -116,9 +113,12 @@ namespace SunnyXamarin
                 Application.Current.Properties.Add("EmailAddress", user.Email);
                 Application.Current.Properties.Add("ProfilePicture", user.Picture);
 
-                Application.Current.MainPage.Navigation.PopAsync();
+                AuthenticationState authentication = new AuthenticationState();
+                authentication.notifyComplete();
+
                 Application.Current.MainPage.Navigation.PushAsync(new TabbedPage1(), true);
             }
         }
+
     }
 }

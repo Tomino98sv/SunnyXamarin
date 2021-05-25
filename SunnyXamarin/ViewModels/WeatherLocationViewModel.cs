@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Text;
 using System.Threading.Tasks;
 using Plugin.Permissions;
 using Plugin.Permissions.Abstractions;
@@ -49,31 +47,25 @@ namespace SunnyXamarin.ViewModels
 
 				if (status == Plugin.Permissions.Abstractions.PermissionStatus.Granted)
 				{
-					var request = new GeolocationRequest(GeolocationAccuracy.Medium);
-					userLocation = await Geolocation.GetLocationAsync(request);
-					if (userLocation != null)
-					{
-						if (userLocation.IsFromMockProvider)
-						{
-							// location is from a mock provider
-							return userLocation;
-						}
-						else
-						{
-							return userLocation;
-						}
-
-					}
+					userLocation = await CallGeoRequest();
+					return userLocation;
 				}
 				else if (status != Plugin.Permissions.Abstractions.PermissionStatus.Granted)
 				{
-					if (await CrossPermissions.Current.ShouldShowRequestPermissionRationaleAsync(Permission.Location))
-					{
-						//await DisplayAlert("Need location", "Gunna need that location", "OK");
-					}
 
 					var results = await CrossPermissions.Current.RequestPermissionsAsync(new[] { Permission.Location });
-					status = results[Permission.Location];
+					/*if (await CrossPermissions.Current.ShouldShowRequestPermissionRationaleAsync(Permission.Location))
+					{
+						//await DisplayAlert("Need location", "Gunna need that location", "OK");
+					}*/
+					Console.WriteLine("results ");
+
+						if (results[Permission.Location] == Plugin.Permissions.Abstractions.PermissionStatus.Granted)
+						{
+							userLocation = await CallGeoRequest();
+							return userLocation;
+						}
+
 				}
 				else if (status != Plugin.Permissions.Abstractions.PermissionStatus.Unknown)
 				{
@@ -106,6 +98,39 @@ namespace SunnyXamarin.ViewModels
 			return userLocation;
 		}
 
+		private async Task<Location> CallGeoRequest()
+		{
+
+			Location userLocation = null;
+
+			try
+			{
+				var request = new GeolocationRequest(GeolocationAccuracy.Medium);
+				userLocation = await Geolocation.GetLocationAsync(request);
+				if (userLocation != null)
+				{
+					if (userLocation.IsFromMockProvider)
+					{
+						// location is from a mock provider
+						return userLocation;
+					}
+					else
+					{
+						return userLocation;
+					}
+
+				}
+			}
+			catch (Exception e) 
+			{
+				throw e;
+			}
+
+			return userLocation;
+
+
+		}
+
 		public WeatherLocationViewModel()
         {
             CallWeatherReq = new Command(async () =>
@@ -115,7 +140,7 @@ namespace SunnyXamarin.ViewModels
 
                 if (result != null)
                 {
-                    WeatherByLoc = result;
+                    WeatherByLoc =  result;
                 }
             });
         }
