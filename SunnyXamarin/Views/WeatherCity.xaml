@@ -8,13 +8,20 @@
     </ContentPage.BindingContext>
     <ContentPage.Content>
 
-        <StackLayout>
+        <StackLayout >
             <Label Text="City ZIP code" Margin="20"></Label>
             <Entry Text="{Binding CityZIP}" Placeholder="069 01" MaxLength="10"></Entry>
             <Label Text="Country code" Margin="20"></Label>
             <Entry Text="{Binding CountryCode}" Placeholder="SK" MaxLength="2"></Entry>
-            <Button x:Name="GetWeatherByLocButton" Command="{Binding CallWeatherReq}"  Text="Get Weather by City ZIP and Country code"></Button>
-
+            <Frame
+                CornerRadius="15"
+                Padding="0"
+                Margin="5,10,5,10" 
+                HasShadow="true"
+                >
+                <Button x:Name="GetWeatherByLocButton" Command="{Binding CallWeatherReq}"  Text="Get Weather by City ZIP and Country code" TextColor="white" BackgroundColor="#8fc3ff"></Button>
+            </Frame>
+            
             <ScrollView>
             <Grid Margin="50,0" RowSpacing="50" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand">
                 <Grid.RowDefinitions>

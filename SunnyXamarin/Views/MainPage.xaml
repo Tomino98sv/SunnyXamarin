@@ -25,7 +25,16 @@
 
                 <Label Grid.Row="1" x:Name="lblIdValue" FontSize="Large" Text="Welcome back " />
 
-                <Button Grid.Row="3" TextColor="White" Text="Google login" Clicked="OnGoogleLoginClick" BackgroundColor="Red"/>
+            <Frame
+                Grid.Row="2" Grid.Column="0"
+                Grid.ColumnSpan="2"
+                CornerRadius="15"
+                Padding="0"
+                Margin="5,10,5,10" 
+                HasShadow="true"
+                >
+                <Button  Image="{local:ImageResource SunnyXamarin.images.Google.png}" ContentLayout="Left,0" TextColor="Black" Text="Google login" Clicked="OnGoogleLoginClick" BackgroundColor="White"/>
+            </Frame>
 
         </Grid>
     </ScrollView>

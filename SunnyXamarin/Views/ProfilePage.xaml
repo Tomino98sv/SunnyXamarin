@@ -3,25 +3,115 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SunnyXamarin.ProfilePage">
     <ContentPage.Content>
-        <StackLayout>
+        <Grid BackgroundColor="#8fc3ff">
 
-            <Image x:Name="imgProfilePicture" Source="ProfilePicture.png"></Image>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Image Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" x:Name="imgProfilePicture" Source="ProfilePicture.png"></Image>
             <Label></Label>
 
-            <Label x:Name="lblIdValue" FontSize="Large" Text="Id : " />
-            <Label></Label>
+            <Frame
+                Grid.Row="1" Grid.Column="0"
+                Grid.ColumnSpan="2"
+                CornerRadius="15"
+                Padding="0"
+                Margin="5,10,5,10" 
+                HasShadow="true"
+                >
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
 
-            <Label x:Name="lblFirstNameValue" FontSize="Large" Text="First Name : "/>
-            <Label></Label>
+                    <Label VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Grid.Row="0" Grid.Column="0" FontSize="Medium"  Text="Id : "/>
+                    <Label VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Grid.Row="0" Grid.Column="1" FontSize="Large" x:Name="lblIdValue" Text=" " Padding="5,0,5,0"></Label>
 
-            <Label x:Name="lblLastNameValue" FontSize="Large" Text="Last Name :" />
-            <Label></Label>
 
-            <Label x:Name="lblEmailAddressValue" FontSize="Large" Text="Email Address : "/>
-            <Label></Label>
+                </Grid>
+            </Frame>
 
-            <Button Text="Sign Out"></Button>
+            <Frame
+                Grid.Row="2" Grid.Column="0"
+                Grid.ColumnSpan="2"
+                CornerRadius="15"
+                Padding="0"
+                Margin="5,10,5,10" 
+                HasShadow="true"
+                >
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
 
-        </StackLayout>
+                    <Label VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Grid.Row="0" Grid.Column="0"  FontSize="Medium" Text="First Name : "/>
+                    <Label VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Grid.Row="0" Grid.Column="1" FontSize="Large" x:Name="lblFirstNameValue" Text=" " Padding="5,0,5,0"></Label>
+
+                </Grid>
+            </Frame>
+
+            <Frame
+                Grid.Row="3" Grid.Column="0"
+                Grid.ColumnSpan="2"
+                CornerRadius="15"
+                Padding="0"
+                Margin="5,10,5,10" 
+                HasShadow="true"
+                >
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Label VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Grid.Row="0" Grid.Column="0"  FontSize="Medium" Text="Last Name :" />
+                    <Label  VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Grid.Row="0" Grid.Column="1" FontSize="Large" x:Name="lblLastNameValue" Text=" " Padding="5,0,5,0"></Label>
+                    
+                </Grid>
+            </Frame>
+
+            <Frame
+                Grid.Row="4" Grid.Column="0"
+                Grid.ColumnSpan="2"
+                CornerRadius="15"
+                Padding="0"
+                Margin="5,10,5,10" 
+                HasShadow="true"
+                >
+                <Grid>
+                    <Grid.RowDefinitions>
+                         <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                          <Grid.ColumnDefinitions>
+                          <ColumnDefinition Width="*" />
+                          <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Label VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Grid.Row="0" Grid.Column="0"  FontSize="Medium" Text="Email Address : "/>
+                    <Label  VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Grid.Row="0" Grid.Column="1" FontSize="Large" x:Name="lblEmailAddressValue" Text=" " Padding="5,0,5,0"></Label>
+                </Grid>
+            </Frame>
+            
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

@@ -12,12 +12,18 @@
 
   <ItemGroup>
     <None Remove="images\CloudsSun.png" />
+    <None Remove="images\Google.png" />
     <None Remove="images\LocationIcon.png" />
+    <None Remove="images\profIcon.png" />
+    <None Remove="images\zip-code.png" />
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Include="images\CloudsSun.png" />
+    <EmbeddedResource Include="images\Google.png" />
     <EmbeddedResource Include="images\LocationIcon.png" />
+    <EmbeddedResource Include="images\profIcon.png" />
+    <EmbeddedResource Include="images\zip-code.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -26,6 +32,12 @@
     <PackageReference Include="Xamarin.Auth" Version="1.7.0" />
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
     <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Views\NavTabs.xaml.cs">
+      <DependentUpon>NavTabs.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
@@ -38,7 +50,7 @@
     <EmbeddedResource Update="Views\WeatherLocation.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\TabbedPage1.xaml">
+    <EmbeddedResource Update="Views\NavTabs.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

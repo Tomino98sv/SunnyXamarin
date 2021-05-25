@@ -29,5 +29,6 @@ namespace SunnyXamarin
             if (Application.Current.Properties["EmailAddress"] != null)
                 lblEmailAddressValue.Text = lblEmailAddressValue.Text + Application.Current.Properties["EmailAddress"].ToString();
         }
-	}
+
+    }
 }

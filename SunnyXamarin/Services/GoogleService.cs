@@ -116,7 +116,7 @@ namespace SunnyXamarin
                 AuthenticationState authentication = new AuthenticationState();
                 authentication.notifyComplete();
 
-                Application.Current.MainPage.Navigation.PushAsync(new TabbedPage1(), true);
+                Application.Current.MainPage.Navigation.PushAsync(new NavTabs(), true);
             }
         }
 
