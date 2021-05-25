@@ -28,6 +28,10 @@ namespace SunnyXamarin.ViewModels
                 }
 
                 weatherByLoc = value;
+				weatherByLoc.WeatherMain.temp = CelvinToCelzius(weatherByLoc.WeatherMain.temp);
+				weatherByLoc.WeatherMain.temp_min = CelvinToCelzius(weatherByLoc.WeatherMain.temp_min);
+				weatherByLoc.WeatherMain.temp_max = CelvinToCelzius(weatherByLoc.WeatherMain.temp_max);
+				weatherByLoc.WeatherMain.feels_like = CelvinToCelzius(weatherByLoc.WeatherMain.feels_like);
 
                 var args = new PropertyChangedEventArgs(nameof(WeatherByLoc));
 
@@ -144,5 +148,11 @@ namespace SunnyXamarin.ViewModels
                 }
             });
         }
-    }
+
+		public double CelvinToCelzius(double d) 
+		{
+			return (d - 273.15);
+		}
+
+	}
 }

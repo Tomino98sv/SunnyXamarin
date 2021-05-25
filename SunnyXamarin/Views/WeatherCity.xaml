@@ -19,110 +19,132 @@
                 Margin="5,10,5,10" 
                 HasShadow="true"
                 >
-                <Button x:Name="GetWeatherByLocButton" Command="{Binding CallWeatherReq}"  Text="Get Weather by City ZIP and Country code" TextColor="white" BackgroundColor="#8fc3ff"></Button>
+                <Button x:Name="GetWeatherByLocButton" Command="{Binding CallWeatherReq}"  Text="Get Weather by City ZIP and Country code" TextColor="white"  BackgroundColor="#8fc3ff"></Button>
             </Frame>
-            
+
             <ScrollView>
-            <Grid Margin="50,0" RowSpacing="50" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
 
-                <Grid Grid.Row="0" HorizontalOptions="FillAndExpand">
-                    <Label LineBreakMode="WordWrap">
-                        <Label.FormattedText>
-                            <FormattedString>
-                                <Span Text="Visibility" TextColor="Black" FontAttributes="Bold" FontSize="Medium"/>
-                                <Span Text="{Binding WeatherByCity.WeatherVisibility}" TextColor="Black" FontFamily="Italic" FontSize="Default"/>
-                            </FormattedString>
-                        </Label.FormattedText>
-                    </Label>
+                <Frame
+                CornerRadius="15"
+                Padding="0"
+                Margin="20,5,20,5" 
+                HasShadow="true"
+                BackgroundColor="#d1e7ff"
+                >
 
-                </Grid>
-                <Grid Grid.Row="1" HorizontalOptions="FillAndExpand">
-                    <Label LineBreakMode="WordWrap">
-                        <Label.FormattedText>
-                            <FormattedString>
-                                <Span Text="main" TextColor="Black" FontAttributes="Bold" FontSize="Medium"/>
-                                <Span Text="{Binding WeatherByCity.WeatherSimple[0].main}" TextColor="Black" FontFamily="Italic" FontSize="Default"/>
-                            </FormattedString>
-                        </Label.FormattedText>
-                    </Label>
 
-                </Grid>
-                <Grid Grid.Row="2" HorizontalOptions="FillAndExpand">
-                    <Label LineBreakMode="WordWrap">
-                        <Label.FormattedText>
-                            <FormattedString>
-                                <Span Text="description" TextColor="Black" FontAttributes="Bold" FontSize="Medium"/>
-                                <Span Text="{Binding WeatherByCity.WeatherSimple[0].description}" TextColor="Black" FontFamily="Italic" FontSize="Default"/>
-                            </FormattedString>
-                        </Label.FormattedText>
-                    </Label>
-                </Grid>
-                <Grid Grid.Row="3" HorizontalOptions="FillAndExpand">
-                    <Label LineBreakMode="WordWrap">
-                        <Label.FormattedText>
-                            <FormattedString>
-                                <Span Text="temp" TextColor="Black" FontAttributes="Bold" FontSize="Medium"/>
-                                <Span Text="{Binding WeatherByCity.WeatherMain.temp}" TextColor="Black" FontFamily="Italic" FontSize="Default"/>
-                            </FormattedString>
-                        </Label.FormattedText>
-                    </Label>
-                </Grid>
-                <Grid Grid.Row="4" HorizontalOptions="FillAndExpand">
-                    <Label LineBreakMode="WordWrap">
-                        <Label.FormattedText>
-                            <FormattedString>
-                                <Span Text="feels_like" TextColor="Black" FontAttributes="Bold" FontSize="Medium"/>
-                                <Span Text="{Binding WeatherByCity.WeatherMain.feels_like}" TextColor="Black" FontFamily="Italic" FontSize="Default"/>
-                            </FormattedString>
-                        </Label.FormattedText>
-                    </Label>
-                </Grid>
-                <Grid Grid.Row="5" HorizontalOptions="FillAndExpand">
-                    <Label LineBreakMode="WordWrap">
-                        <Label.FormattedText>
-                            <FormattedString>
-                                <Span Text="temp_min" TextColor="Black" FontAttributes="Bold" FontSize="Medium"/>
-                                <Span Text="{Binding WeatherByCity.WeatherMain.temp_min}" TextColor="Black" FontFamily="Italic" FontSize="Default"/>
-                            </FormattedString>
-                        </Label.FormattedText>
-                    </Label>
-                </Grid>
-                <Grid Grid.Row="6" HorizontalOptions="FillAndExpand">
-                    <Label LineBreakMode="WordWrap">
-                        <Label.FormattedText>
-                            <FormattedString>
-                                <Span Text="temp_max" TextColor="Black" FontAttributes="Bold" FontSize="Medium"/>
-                                <Span Text="{Binding WeatherByCity.WeatherMain.temp_max}" TextColor="Black" FontFamily="Italic" FontSize="Default"/>
-                            </FormattedString>
-                        </Label.FormattedText>
-                    </Label>
-                </Grid>
-                <Grid Grid.Row="7" HorizontalOptions="FillAndExpand">
-                    <Label LineBreakMode="WordWrap">
-                        <Label.FormattedText>
-                            <FormattedString>
-                                <Span Text="pressure" TextColor="Black" FontAttributes="Bold" FontSize="Medium"/>
-                                <Span Text="{Binding WeatherByCity.WeatherMain.pressure}" TextColor="Black" FontFamily="Italic" FontSize="Default"/>
-                            </FormattedString>
-                        </Label.FormattedText>
-                    </Label>
-                </Grid>
-                <Grid Grid.Row="8" HorizontalOptions="FillAndExpand">
-                    <Label LineBreakMode="WordWrap">
-                        <Label.FormattedText>
-                            <FormattedString>
-                                <Span Text="humidity" TextColor="Black" FontAttributes="Bold" FontSize="Medium"/>
-                                <Span Text="{Binding WeatherByCity.WeatherMain.humidity}" TextColor="Black" FontFamily="Italic" FontSize="Default"/>
-                            </FormattedString>
-                        </Label.FormattedText>
-                    </Label>
-                </Grid>
-            </Grid>
-        </ScrollView>
+                    <Grid RowSpacing="50" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Grid Grid.Row="0" Grid.Column="0" HorizontalOptions="FillAndExpand">
+
+                            <Label VerticalTextAlignment="Center"  HorizontalTextAlignment="Center" TextColor="Black"  FontSize="Large"  Text="{Binding WeatherByLoc.cityname}"/>
+
+                        </Grid>
+
+
+                        <Grid Grid.Row="1" Grid.ColumnSpan="2"  HorizontalOptions="FillAndExpand">
+                            <Image Source="{Binding WeatherByCity.WeatherSimple[0].icon, StringFormat='http://openweathermap.org/img/wn/{0:F0}@4x.png'}"></Image>
+                        </Grid>
+
+                        <Grid Grid.Row="2" Grid.Column="0" HorizontalOptions="FillAndExpand" Margin="15">
+                            <Label LineBreakMode="WordWrap">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{Binding WeatherByCity.WeatherSimple[0].main}" TextColor="Black" FontFamily="Italic" FontSize="Medium"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </Grid>
+                        <Grid Grid.Row="3"  Grid.Column="1" HorizontalOptions="FillAndExpand" Margin="15">
+                            <Label LineBreakMode="WordWrap">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{Binding WeatherByCity.WeatherSimple[0].description}" TextColor="Black" FontFamily="Italic" FontSize="Medium"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </Grid>
+
+                        <Grid Grid.Row="4" Grid.Column="0" HorizontalOptions="FillAndExpand" Margin="15">
+                            <Label LineBreakMode="WordWrap">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{Binding WeatherByCity.WeatherMain.temp, StringFormat='Temperature {0:F0} °C '}" TextColor="Black" FontFamily="Italic" FontSize="Medium"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </Grid>
+                        <Grid Grid.Row="5"  Grid.Column="1" HorizontalOptions="FillAndExpand" Margin="15">
+                            <Label LineBreakMode="WordWrap">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{Binding WeatherByCity.WeatherMain.temp_min, StringFormat='Minimum Temperature{0:F0} °C '}" TextColor="Black" FontFamily="Italic" FontSize="Medium"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </Grid>
+
+                        <Grid Grid.Row="6" Grid.Column="0" HorizontalOptions="FillAndExpand" Margin="15">
+                            <Label LineBreakMode="WordWrap">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{Binding WeatherByCity.WeatherMain.temp_max, StringFormat=' Maximum Temperature {0:F0} °C '}" TextColor="Black" FontFamily="Italic" FontSize="Medium"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+
+                        </Grid>
+                        <Grid Grid.Row="7" Grid.Column="1" HorizontalOptions="FillAndExpand" Margin="15">
+                            <Label LineBreakMode="WordWrap">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{Binding WeatherByCity.WeatherMain.feels_like, StringFormat='Feels Like {0:F0} °C '}" TextColor="Black" FontFamily="Italic" FontSize="Medium"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+
+                        </Grid>
+                        <Grid Grid.Row="8" Grid.Column="0" HorizontalOptions="FillAndExpand" Margin="15">
+                            <Label LineBreakMode="WordWrap">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{Binding WeatherByCity.WeatherMain.pressure, StringFormat='Atmospheric pressure {0:F0} hPa '}" TextColor="Black" FontFamily="Italic" FontSize="Medium"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </Grid>
+                        <Grid Grid.Row="9" Grid.Column="1" HorizontalOptions="FillAndExpand" Margin="15">
+                            <Label LineBreakMode="WordWrap">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{Binding WeatherByCity.WeatherMain.humidity, StringFormat='Humidity: {0:F0} %'}" TextColor="Black" FontFamily="Italic" FontSize="Medium"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </Grid>
+
+
+                    </Grid>
+
+                </Frame>
+
+            </ScrollView>
 
         </StackLayout>
 

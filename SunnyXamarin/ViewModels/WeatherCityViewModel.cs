@@ -26,6 +26,10 @@ namespace SunnyXamarin.ViewModels
                 }
 
                 weatherByCity = value;
+                weatherByCity.WeatherMain.temp = CelvinToCelzius(weatherByCity.WeatherMain.temp);
+                weatherByCity.WeatherMain.temp_min = CelvinToCelzius(weatherByCity.WeatherMain.temp_min);
+                weatherByCity.WeatherMain.temp_max = CelvinToCelzius(weatherByCity.WeatherMain.temp_max);
+                weatherByCity.WeatherMain.feels_like = CelvinToCelzius(weatherByCity.WeatherMain.feels_like);
 
                 var args = new PropertyChangedEventArgs(nameof(WeatherByCity));
 
@@ -83,6 +87,11 @@ namespace SunnyXamarin.ViewModels
                     WeatherByCity = result;
                 }
             });
+        }
+
+        public double CelvinToCelzius(double d)
+        {
+            return (d - 273.15);
         }
     }
 }
