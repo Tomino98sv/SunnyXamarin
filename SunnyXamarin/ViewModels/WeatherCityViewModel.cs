@@ -20,7 +20,7 @@ namespace SunnyXamarin.ViewModels
         {
             CallWeatherReq = new Command(async () =>
             {
-                var result = await _rest.getWeatherByCity(CityZIP, CountryCode);
+                var result = await _rest.GetWeatherByCity(CityZIP, CountryCode);
 
                 if (result != null)
                 {
@@ -40,10 +40,10 @@ namespace SunnyXamarin.ViewModels
                 }
 
                 _weatherByCity = value;
-                _weatherByCity.WeatherMain.temp = _rest.Conversion_CelvinToCelzius(_weatherByCity.WeatherMain.temp);
-                _weatherByCity.WeatherMain.temp_min = _rest.Conversion_CelvinToCelzius(_weatherByCity.WeatherMain.temp_min);
-                _weatherByCity.WeatherMain.temp_max = _rest.Conversion_CelvinToCelzius(_weatherByCity.WeatherMain.temp_max);
-                _weatherByCity.WeatherMain.feels_like = _rest.Conversion_CelvinToCelzius(_weatherByCity.WeatherMain.feels_like);
+                _weatherByCity.WeatherMain.Temp = _rest.Conversion_CelvinToCelzius(_weatherByCity.WeatherMain.Temp);
+                _weatherByCity.WeatherMain.Temp_min = _rest.Conversion_CelvinToCelzius(_weatherByCity.WeatherMain.Temp_min);
+                _weatherByCity.WeatherMain.Temp_max = _rest.Conversion_CelvinToCelzius(_weatherByCity.WeatherMain.Temp_max);
+                _weatherByCity.WeatherMain.Feels_like = _rest.Conversion_CelvinToCelzius(_weatherByCity.WeatherMain.Feels_like);
 
                 var args = new PropertyChangedEventArgs(nameof(WeatherByCity));
 

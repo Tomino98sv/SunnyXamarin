@@ -8,15 +8,15 @@ namespace SunnyXamarin.Services
 {
     public class OpenWeatherService : IOpenWeatherService
     {
-        const string baseURL= "http://api.openweathermap.org/data/2.5/weather";
-        const string apiKey = "appid=f491b607f1c1e1bb4af977bb5581ba86";
+        private string _baseURL = "http://api.openweathermap.org/data/2.5/weather";
+        private string _apiKey = "appid=f491b607f1c1e1bb4af977bb5581ba86";
 
-        public async Task<WeatherModel> getWeatherByLocation(string longitude, string latitude)
+        public async Task<WeatherModel> GetWeatherByLocation(string longitude, string latitude)
         {
             try
             {
                 var request = new HttpRequestMessage();
-                string url = baseURL + "?lat=" + latitude + "&lon=" + longitude + "&" + apiKey;
+                string url = _baseURL + "?lat=" + latitude + "&lon=" + longitude + "&" + _apiKey;
                 request.RequestUri = new Uri(url);
                 request.Method = HttpMethod.Get;
                 request.Headers.Add("Accept", "application/json");
@@ -40,12 +40,12 @@ namespace SunnyXamarin.Services
 
         }
 
-        public async Task<WeatherModel> getWeatherByCity(string cityZip, string countryCode)
+        public async Task<WeatherModel> GetWeatherByCity(string cityZip, string countryCode)
         {
             try
             {
                 var request = new HttpRequestMessage();
-                string url = baseURL + "?zip=" + cityZip + "," + countryCode + "&" + apiKey;
+                string url = _baseURL + "?zip=" + cityZip + "," + countryCode + "&" + _apiKey;
                 request.RequestUri = new Uri(url);
                 request.Method = HttpMethod.Get;
                 request.Headers.Add("Accept", "application/json");

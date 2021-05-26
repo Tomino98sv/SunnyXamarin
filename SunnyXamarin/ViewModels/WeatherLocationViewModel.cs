@@ -1,8 +1,4 @@
-﻿using System;
-using System.ComponentModel;
-using System.Threading.Tasks;
-using Plugin.Permissions;
-using Plugin.Permissions.Abstractions;
+﻿using System.ComponentModel;
 using SunnyXamarin.Models;
 using SunnyXamarin.Services;
 using Xamarin.Essentials;
@@ -25,7 +21,7 @@ namespace SunnyXamarin.ViewModels
 			CallWeatherReq = new Command(async () =>
 			{
 				Location location = await _geo.GetCurrentLocation();
-				var result = await _rest.getWeatherByLocation(location.Longitude.ToString(), location.Latitude.ToString());
+				var result = await _rest.GetWeatherByLocation(location.Longitude.ToString(), location.Latitude.ToString());
 
 				if (result != null)
 				{
@@ -33,7 +29,6 @@ namespace SunnyXamarin.ViewModels
 				}
 			});
 		}
-
 
 		public WeatherModel WeatherByLoc
         {
@@ -46,10 +41,10 @@ namespace SunnyXamarin.ViewModels
                 }
 
 				_weatherByLoc = value;
-				_weatherByLoc.WeatherMain.temp = _rest.Conversion_CelvinToCelzius(_weatherByLoc.WeatherMain.temp);
-				_weatherByLoc.WeatherMain.temp_min = _rest.Conversion_CelvinToCelzius(_weatherByLoc.WeatherMain.temp_min);
-				_weatherByLoc.WeatherMain.temp_max = _rest.Conversion_CelvinToCelzius(_weatherByLoc.WeatherMain.temp_max);
-				_weatherByLoc.WeatherMain.feels_like = _rest.Conversion_CelvinToCelzius(_weatherByLoc.WeatherMain.feels_like);
+				_weatherByLoc.WeatherMain.Temp = _rest.Conversion_CelvinToCelzius(_weatherByLoc.WeatherMain.Temp);
+				_weatherByLoc.WeatherMain.Temp_min = _rest.Conversion_CelvinToCelzius(_weatherByLoc.WeatherMain.Temp_min);
+				_weatherByLoc.WeatherMain.Temp_max = _rest.Conversion_CelvinToCelzius(_weatherByLoc.WeatherMain.Temp_max);
+				_weatherByLoc.WeatherMain.Feels_like = _rest.Conversion_CelvinToCelzius(_weatherByLoc.WeatherMain.Feels_like);
 
                 var args = new PropertyChangedEventArgs(nameof(WeatherByLoc));
 

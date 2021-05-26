@@ -9,9 +9,10 @@ namespace SunnyXamarin.Services
     public class GeoLocationService : IGeoLocationService
     {
 
+		private Location _userLocation;
+
 		public async Task<Location> GetCurrentLocation()
 		{
-			Location userLocation = null;
 			try
 			{
 
@@ -19,8 +20,8 @@ namespace SunnyXamarin.Services
 
 				if (status == Plugin.Permissions.Abstractions.PermissionStatus.Granted)
 				{
-					userLocation = await CallGeoRequest();
-					return userLocation;
+					await CallGeoRequest();
+					return _userLocation;
 				}
 				else if (status != Plugin.Permissions.Abstractions.PermissionStatus.Granted)
 				{
@@ -34,14 +35,20 @@ namespace SunnyXamarin.Services
 
 					if (results[Permission.Location] == Plugin.Permissions.Abstractions.PermissionStatus.Granted)
 					{
-						userLocation = await CallGeoRequest();
-						return userLocation;
+						_userLocation = await CallGeoRequest();
+						return _userLocation;
 					}
 
 				}
 				else if (status != Plugin.Permissions.Abstractions.PermissionStatus.Unknown)
 				{
-					//await DisplayAlert("Location Denied", "Can not continue, try again.", "OK");
+					var results = await CrossPermissions.Current.RequestPermissionsAsync(new[] { Permission.Location });
+					
+					if (results[Permission.Location] == Plugin.Permissions.Abstractions.PermissionStatus.Granted)
+					{
+						_userLocation = await CallGeoRequest();
+						return _userLocation;
+					}
 				}
 
 			}
@@ -50,28 +57,26 @@ namespace SunnyXamarin.Services
 				throw ex;
 			}
 
-			return userLocation;
+			return _userLocation;
 		}
 
 		private async Task<Location> CallGeoRequest()
 		{
 
-			Location userLocation = null;
-
 			try
 			{
 				var request = new GeolocationRequest(GeolocationAccuracy.Medium);
-				userLocation = await Geolocation.GetLocationAsync(request);
-				if (userLocation != null)
+				_userLocation = await Geolocation.GetLocationAsync(request);
+				if (_userLocation != null)
 				{
-					if (userLocation.IsFromMockProvider)
+					if (_userLocation.IsFromMockProvider)
 					{
 						// location is from a mock provider
-						return userLocation;
+						return _userLocation;
 					}
 					else
 					{
-						return userLocation;
+						return _userLocation;
 					}
 
 				}
@@ -81,8 +86,7 @@ namespace SunnyXamarin.Services
 				throw e;
 			}
 
-			return userLocation;
-
+			return _userLocation;
 
 		}
 	}

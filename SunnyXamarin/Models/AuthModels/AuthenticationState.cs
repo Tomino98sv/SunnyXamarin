@@ -10,7 +10,7 @@ namespace SunnyXamarin
         public delegate void GoogleSignInCompletetionHandler(object source, EventArgs args);
         public static event GoogleSignInCompletetionHandler GoogleSignInEventCompletion;
 
-        public void notifyComplete()
+        public void NotifyComplete()
         { 
             OnGoogleSignInDone();
         }

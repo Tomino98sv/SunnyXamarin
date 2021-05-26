@@ -22,23 +22,23 @@ namespace SunnyXamarin.Models
         public Clouds WeatherClouds { get; set; }
 
         [JsonProperty("name")]
-        public string cityname { get; set; }
+        public string Cityname { get; set; }
 
         public class Weather
         {
             //[{"id":804,"main":"Clouds","description":"overcast clouds","icon":"04d"}]
 
             [JsonProperty("id")]
-            public int id { get; set; }
+            public int Id { get; set; }
 
             [JsonProperty("main")]
-            public string main { get; set; }
+            public string Main { get; set; }
 
             [JsonProperty("description")]
-            public string description { get; set; }
+            public string Description { get; set; }
 
             [JsonProperty("icon")]
-            public string icon { get; set; }
+            public string Icon { get; set; }
 
         }
 
@@ -47,22 +47,22 @@ namespace SunnyXamarin.Models
             //{"temp":286.32,"feels_like":285.42,"temp_min":283.61,"temp_max":286.64,"pressure":1011,"humidity":66}
 
             [JsonProperty("temp")]
-            public double temp { get; set; }
+            public double Temp { get; set; }
 
             [JsonProperty("feels_like")]
-            public double feels_like { get; set; }
+            public double Feels_like { get; set; }
 
             [JsonProperty("temp_min")]
-            public double temp_min { get; set; }
+            public double Temp_min { get; set; }
 
             [JsonProperty("temp_max")]
-            public double temp_max { get; set; }
+            public double Temp_max { get; set; }
 
             [JsonProperty("pressure")]
-            public int pressure { get; set; }
+            public int Pressure { get; set; }
 
             [JsonProperty("humidity")]
-            public int humidity { get; set; }
+            public int Humidity { get; set; }
 
 
     }
@@ -71,20 +71,20 @@ namespace SunnyXamarin.Models
         {
             //{"speed":2.83,"deg":210,"gust":6.31}
             [JsonProperty("speed")]
-            public float speed { get; set; }
+            public float Speed { get; set; }
 
             [JsonProperty("deg")]
-            public int deg { get; set; }
+            public int Deg { get; set; }
 
             [JsonProperty("gust")]
-            public float gust { get; set; }
+            public float Gust { get; set; }
         }
 
         public class Clouds
         {
             //{"all":100}
             [JsonProperty("all")]
-            public int all { get; set; }
+            public int All { get; set; }
     }
     }
 }

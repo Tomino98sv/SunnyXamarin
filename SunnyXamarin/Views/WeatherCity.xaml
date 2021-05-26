@@ -59,14 +59,14 @@
 
 
                         <Grid Grid.Row="1" Grid.ColumnSpan="2"  HorizontalOptions="FillAndExpand">
-                            <Image Source="{Binding WeatherByCity.WeatherSimple[0].icon, StringFormat='http://openweathermap.org/img/wn/{0:F0}@4x.png'}"></Image>
+                            <Image Source="{Binding WeatherByCity.WeatherSimple[0].Icon, StringFormat='http://openweathermap.org/img/wn/{0:F0}@4x.png'}"></Image>
                         </Grid>
 
                         <Grid Grid.Row="2" Grid.Column="0" HorizontalOptions="FillAndExpand" Margin="15">
                             <Label LineBreakMode="WordWrap">
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Text="{Binding WeatherByCity.WeatherSimple[0].main}" TextColor="Black" FontFamily="Italic" FontSize="Medium"/>
+                                        <Span Text="{Binding WeatherByCity.WeatherSimple[0].Main}" TextColor="Black" FontFamily="Italic" FontSize="Medium"/>
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
@@ -75,7 +75,7 @@
                             <Label LineBreakMode="WordWrap">
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Text="{Binding WeatherByCity.WeatherSimple[0].description}" TextColor="Black" FontFamily="Italic" FontSize="Medium"/>
+                                        <Span Text="{Binding WeatherByCity.WeatherSimple[0].Description}" TextColor="Black" FontFamily="Italic" FontSize="Medium"/>
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
@@ -85,7 +85,7 @@
                             <Label LineBreakMode="WordWrap">
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Text="{Binding WeatherByCity.WeatherMain.temp, StringFormat='Temperature {0:F0} °C '}" TextColor="Black" FontFamily="Italic" FontSize="Medium"/>
+                                        <Span Text="{Binding WeatherByCity.WeatherMain.Temp, StringFormat='Temperature {0:F0} °C '}" TextColor="Black" FontFamily="Italic" FontSize="Medium"/>
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
@@ -94,7 +94,7 @@
                             <Label LineBreakMode="WordWrap">
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Text="{Binding WeatherByCity.WeatherMain.temp_min, StringFormat='Minimum Temperature{0:F0} °C '}" TextColor="Black" FontFamily="Italic" FontSize="Medium"/>
+                                        <Span Text="{Binding WeatherByCity.WeatherMain.Temp_min, StringFormat='Minimum Temperature{0:F0} °C '}" TextColor="Black" FontFamily="Italic" FontSize="Medium"/>
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
@@ -104,7 +104,7 @@
                             <Label LineBreakMode="WordWrap">
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Text="{Binding WeatherByCity.WeatherMain.temp_max, StringFormat=' Maximum Temperature {0:F0} °C '}" TextColor="Black" FontFamily="Italic" FontSize="Medium"/>
+                                        <Span Text="{Binding WeatherByCity.WeatherMain.Temp_max, StringFormat=' Maximum Temperature {0:F0} °C '}" TextColor="Black" FontFamily="Italic" FontSize="Medium"/>
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
@@ -114,7 +114,7 @@
                             <Label LineBreakMode="WordWrap">
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Text="{Binding WeatherByCity.WeatherMain.feels_like, StringFormat='Feels Like {0:F0} °C '}" TextColor="Black" FontFamily="Italic" FontSize="Medium"/>
+                                        <Span Text="{Binding WeatherByCity.WeatherMain.Feels_like, StringFormat='Feels Like {0:F0} °C '}" TextColor="Black" FontFamily="Italic" FontSize="Medium"/>
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
@@ -124,7 +124,7 @@
                             <Label LineBreakMode="WordWrap">
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Text="{Binding WeatherByCity.WeatherMain.pressure, StringFormat='Atmospheric pressure {0:F0} hPa '}" TextColor="Black" FontFamily="Italic" FontSize="Medium"/>
+                                        <Span Text="{Binding WeatherByCity.WeatherMain.Pressure, StringFormat='Atmospheric pressure {0:F0} hPa '}" TextColor="Black" FontFamily="Italic" FontSize="Medium"/>
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
@@ -133,7 +133,7 @@
                             <Label LineBreakMode="WordWrap">
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Text="{Binding WeatherByCity.WeatherMain.humidity, StringFormat='Humidity: {0:F0} %'}" TextColor="Black" FontFamily="Italic" FontSize="Medium"/>
+                                        <Span Text="{Binding WeatherByCity.WeatherMain.Humidity, StringFormat='Humidity: {0:F0} %'}" TextColor="Black" FontFamily="Italic" FontSize="Medium"/>
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>

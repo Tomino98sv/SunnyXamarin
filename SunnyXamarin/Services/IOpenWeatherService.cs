@@ -5,9 +5,9 @@ namespace SunnyXamarin.Services
 {
     interface IOpenWeatherService
     {
-        Task<WeatherModel> getWeatherByLocation(string longitude, string latitude);
+        Task<WeatherModel> GetWeatherByLocation(string longitude, string latitude);
 
-        Task<WeatherModel> getWeatherByCity(string cityZip, string countryCode);
+        Task<WeatherModel> GetWeatherByCity(string cityZip, string countryCode);
 
         double Conversion_CelvinToCelzius(double celvin);
 

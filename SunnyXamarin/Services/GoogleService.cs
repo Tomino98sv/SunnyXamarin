@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using SunnyXamarin.Services;
 using System;
 using System.Diagnostics;
 using System.Linq;
@@ -7,18 +8,18 @@ using Xamarin.Forms;
 
 namespace SunnyXamarin
 {
-    public class GoogleService
+    public class GoogleService : IGoogleService
     {
-        static Account account;
-        private static AccountStore _store;
+        private Account _account;
+        private AccountStore _store;
 
 
-        public static void CreateAccountStore()
+        public void CreateAccountStore()
         {
             _store = AccountStore.Create();
         }
 
-        public static AccountStore GetAccountStore() 
+        public AccountStore GetAccountStore() 
         {
             if (_store == null)
             {
@@ -27,7 +28,7 @@ namespace SunnyXamarin
             return _store;
         }
 
-        public static void GoogleSignIn()
+        public void GoogleSignIn()
         {
             string clientId = null;
             string redirectUri = null;
@@ -44,7 +45,7 @@ namespace SunnyXamarin
                     break;
             }
 
-            account = _store.FindAccountsForService(Constants.AppName).FirstOrDefault();
+            _account = _store.FindAccountsForService(Constants.AppName).FirstOrDefault();
 
             var authenticator = new OAuth2Authenticator(
                 clientId,
@@ -68,7 +69,7 @@ namespace SunnyXamarin
         }
 
 
-        public static void OnAuthError(object sender, AuthenticatorErrorEventArgs e)
+        public void OnAuthError(object sender, AuthenticatorErrorEventArgs e)
         {
             var authenticator = sender as OAuth2Authenticator;
             if (authenticator != null)
@@ -82,7 +83,7 @@ namespace SunnyXamarin
 
 
 
-        public static async void OnAuthCompleted(Object sender, AuthenticatorCompletedEventArgs e)
+        public async void OnAuthCompleted(Object sender, AuthenticatorCompletedEventArgs e)
         {
             var authenticator = sender as OAuth2Authenticator;
             if (authenticator != null)
@@ -102,12 +103,12 @@ namespace SunnyXamarin
                     user = JsonConvert.DeserializeObject<UserObj>(userJson);
                 }
 
-                if (account != null)
+                if (_account != null)
                 {
-                    _store.Delete(account, Constants.AppName);
+                    _store.Delete(_account, Constants.AppName);
                 }
 
-                await _store.SaveAsync(account = e.Account, Constants.AppName);
+                await _store.SaveAsync(_account = e.Account, Constants.AppName);
 
                 Application.Current.Properties.Remove("Id");
                 Application.Current.Properties.Remove("FirstName");
@@ -125,7 +126,7 @@ namespace SunnyXamarin
 
                 Application.Current.MainPage.Navigation.PushAsync(new NavTabs(), true);
                 AuthenticationState authentication = new AuthenticationState();
-                authentication.notifyComplete();
+                authentication.NotifyComplete();
 
             }
         }

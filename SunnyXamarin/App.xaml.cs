@@ -10,6 +10,7 @@ namespace SunnyXamarin
             InitializeComponent();
             DependencyService.Register<IOpenWeatherService, OpenWeatherService>();
             DependencyService.Register<IGeoLocationService, GeoLocationService>();
+            DependencyService.Register<IGoogleService, GoogleService>();
             MainPage = new NavigationPage(new MainPage());
         }
 
