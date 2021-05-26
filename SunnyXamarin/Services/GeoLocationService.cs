@@ -27,15 +27,10 @@ namespace SunnyXamarin.Services
 				{
 
 					var results = await CrossPermissions.Current.RequestPermissionsAsync(new[] { Permission.Location });
-					/*if (await CrossPermissions.Current.ShouldShowRequestPermissionRationaleAsync(Permission.Location))
-					{
-						//await DisplayAlert("Need location", "Gunna need that location", "OK");
-					}*/
-					Console.WriteLine("results ");
 
 					if (results[Permission.Location] == Plugin.Permissions.Abstractions.PermissionStatus.Granted)
 					{
-						_userLocation = await CallGeoRequest();
+						await CallGeoRequest();
 						return _userLocation;
 					}
 
@@ -46,7 +41,7 @@ namespace SunnyXamarin.Services
 					
 					if (results[Permission.Location] == Plugin.Permissions.Abstractions.PermissionStatus.Granted)
 					{
-						_userLocation = await CallGeoRequest();
+						await CallGeoRequest();
 						return _userLocation;
 					}
 				}
@@ -55,6 +50,8 @@ namespace SunnyXamarin.Services
 			catch (Exception ex)
 			{
 				throw ex;
+				Console.WriteLine("ex ",ex.Message);
+
 			}
 
 			return _userLocation;

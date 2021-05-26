@@ -3,6 +3,7 @@ using SunnyXamarin.Services;
 using System;
 using System.Diagnostics;
 using System.Linq;
+using System.Threading.Tasks;
 using Xamarin.Auth;
 using Xamarin.Forms;
 
@@ -12,7 +13,7 @@ namespace SunnyXamarin
     {
         private Account _account;
         private AccountStore _store;
-
+        private UserObj _user;
 
         public void CreateAccountStore()
         {
@@ -92,16 +93,10 @@ namespace SunnyXamarin
                 authenticator.Error -= OnAuthError;
             }
 
-            UserObj user = null;
+            _user = null;
             if (e.IsAuthenticated)
             {
-                var request = new OAuth2Request("GET", new Uri(Constants.UserInfoUrl), null, e.Account);
-                var response = await request.GetResponseAsync();
-                if (response != null)
-                {
-                    string userJson = await response.GetResponseTextAsync();
-                    user = JsonConvert.DeserializeObject<UserObj>(userJson);
-                }
+                _user = await GetUserInfo_Request(e);
 
                 if (_account != null)
                 {
@@ -110,25 +105,46 @@ namespace SunnyXamarin
 
                 await _store.SaveAsync(_account = e.Account, Constants.AppName);
 
-                Application.Current.Properties.Remove("Id");
-                Application.Current.Properties.Remove("FirstName");
-                Application.Current.Properties.Remove("LastName");
-                Application.Current.Properties.Remove("DisplayName");
-                Application.Current.Properties.Remove("EmailAddress");
-                Application.Current.Properties.Remove("ProfilePicture");
-
-                Application.Current.Properties.Add("Id", user.Id);
-                Application.Current.Properties.Add("FirstName", user.FirstName);
-                Application.Current.Properties.Add("LastName", user.LastName);
-                Application.Current.Properties.Add("DisplayName", user.Name);
-                Application.Current.Properties.Add("EmailAddress", user.Email);
-                Application.Current.Properties.Add("ProfilePicture", user.Picture);
+                SaveUserProperties();
 
                 Application.Current.MainPage.Navigation.PushAsync(new NavTabs(), true);
                 AuthenticationState authentication = new AuthenticationState();
                 authentication.NotifyComplete();
 
             }
+        }
+
+        private async Task<UserObj> GetUserInfo_Request(AuthenticatorCompletedEventArgs e)
+        {
+            UserObj user = null;
+
+            var request = new OAuth2Request("GET", new Uri(Constants.UserInfoUrl), null, e.Account);
+            var response = await request.GetResponseAsync();
+            if (response != null)
+            {
+                string userJson = await response.GetResponseTextAsync();
+                user = JsonConvert.DeserializeObject<UserObj>(userJson);
+                return user;
+            }
+
+            return user;
+        }
+
+        private void SaveUserProperties()
+        {
+            Application.Current.Properties.Remove("Id");
+            Application.Current.Properties.Remove("FirstName");
+            Application.Current.Properties.Remove("LastName");
+            Application.Current.Properties.Remove("DisplayName");
+            Application.Current.Properties.Remove("EmailAddress");
+            Application.Current.Properties.Remove("ProfilePicture");
+
+            Application.Current.Properties.Add("Id", _user.Id);
+            Application.Current.Properties.Add("FirstName", _user.FirstName);
+            Application.Current.Properties.Add("LastName", _user.LastName);
+            Application.Current.Properties.Add("DisplayName", _user.Name);
+            Application.Current.Properties.Add("EmailAddress", _user.Email);
+            Application.Current.Properties.Add("ProfilePicture", _user.Picture);
         }
 
     }
