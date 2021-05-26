@@ -10,11 +10,21 @@ namespace SunnyXamarin
     public class GoogleService
     {
         static Account account;
-        public static AccountStore store;
+        private static AccountStore _store;
 
-        public static void CreateAccountStore() 
+
+        public static void CreateAccountStore()
         {
-            store = AccountStore.Create();
+            _store = AccountStore.Create();
+        }
+
+        public static AccountStore GetAccountStore() 
+        {
+            if (_store == null)
+            {
+                _store = AccountStore.Create();
+            }
+            return _store;
         }
 
         public static void GoogleSignIn()
@@ -34,7 +44,7 @@ namespace SunnyXamarin
                     break;
             }
 
-            account = store.FindAccountsForService(Constants.AppName).FirstOrDefault();
+            account = _store.FindAccountsForService(Constants.AppName).FirstOrDefault();
 
             var authenticator = new OAuth2Authenticator(
                 clientId,
@@ -94,10 +104,10 @@ namespace SunnyXamarin
 
                 if (account != null)
                 {
-                    store.Delete(account, Constants.AppName);
+                    _store.Delete(account, Constants.AppName);
                 }
 
-                await store.SaveAsync(account = e.Account, Constants.AppName);
+                await _store.SaveAsync(account = e.Account, Constants.AppName);
 
                 Application.Current.Properties.Remove("Id");
                 Application.Current.Properties.Remove("FirstName");
@@ -113,10 +123,10 @@ namespace SunnyXamarin
                 Application.Current.Properties.Add("EmailAddress", user.Email);
                 Application.Current.Properties.Add("ProfilePicture", user.Picture);
 
+                Application.Current.MainPage.Navigation.PushAsync(new NavTabs(), true);
                 AuthenticationState authentication = new AuthenticationState();
                 authentication.notifyComplete();
 
-                Application.Current.MainPage.Navigation.PushAsync(new NavTabs(), true);
             }
         }
 

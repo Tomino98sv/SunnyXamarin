@@ -8,73 +8,13 @@ namespace SunnyXamarin.ViewModels
     class WeatherCityViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
-
-        private WeatherModel weatherByCity = new WeatherModel();
-        private string cityZIP = string.Empty;
-        private string countryCode = string.Empty;
-
-        IOpenWeatherService _rest = DependencyService.Get<IOpenWeatherService>();
-
-        public WeatherModel WeatherByCity
-        {
-            get => weatherByCity;
-            set 
-            {
-                if (weatherByCity == value)
-                {
-                    return;
-                }
-
-                weatherByCity = value;
-                weatherByCity.WeatherMain.temp = CelvinToCelzius(weatherByCity.WeatherMain.temp);
-                weatherByCity.WeatherMain.temp_min = CelvinToCelzius(weatherByCity.WeatherMain.temp_min);
-                weatherByCity.WeatherMain.temp_max = CelvinToCelzius(weatherByCity.WeatherMain.temp_max);
-                weatherByCity.WeatherMain.feels_like = CelvinToCelzius(weatherByCity.WeatherMain.feels_like);
-
-                var args = new PropertyChangedEventArgs(nameof(WeatherByCity));
-
-                PropertyChanged?.Invoke(this, args);
-            }
-        }
-
-        public string CityZIP
-        {
-            get => cityZIP;
-            set
-            {
-                if (cityZIP == value)
-                {
-                    return;
-                }
-
-                cityZIP = value;
-
-                var args = new PropertyChangedEventArgs(nameof(CityZIP));
-
-                PropertyChanged?.Invoke(this, args);
-            }
-        }
-
-        public string CountryCode
-        {
-            get => countryCode;
-            set
-            {
-                if (countryCode == value)
-                {
-                    return;
-                }
-
-                countryCode = value;
-
-                var args = new PropertyChangedEventArgs(nameof(CountryCode));
-
-                PropertyChanged?.Invoke(this, args);
-            }
-        }
-
         public Command CallWeatherReq { get; }
-        
+
+        private WeatherModel _weatherByCity = new WeatherModel();
+        private string _cityZIP = string.Empty;
+        private string _countryCode = string.Empty;
+        private IOpenWeatherService _rest = DependencyService.Get<IOpenWeatherService>();
+
 
         public WeatherCityViewModel()
         {
@@ -89,9 +29,61 @@ namespace SunnyXamarin.ViewModels
             });
         }
 
-        public double CelvinToCelzius(double d)
+        public WeatherModel WeatherByCity
         {
-            return (d - 273.15);
+            get => _weatherByCity;
+            set 
+            {
+                if (_weatherByCity == value)
+                {
+                    return;
+                }
+
+                _weatherByCity = value;
+                _weatherByCity.WeatherMain.temp = _rest.Conversion_CelvinToCelzius(_weatherByCity.WeatherMain.temp);
+                _weatherByCity.WeatherMain.temp_min = _rest.Conversion_CelvinToCelzius(_weatherByCity.WeatherMain.temp_min);
+                _weatherByCity.WeatherMain.temp_max = _rest.Conversion_CelvinToCelzius(_weatherByCity.WeatherMain.temp_max);
+                _weatherByCity.WeatherMain.feels_like = _rest.Conversion_CelvinToCelzius(_weatherByCity.WeatherMain.feels_like);
+
+                var args = new PropertyChangedEventArgs(nameof(WeatherByCity));
+
+                PropertyChanged?.Invoke(this, args);
+            }
         }
+        public string CityZIP
+        {
+            get => _cityZIP;
+            set
+            {
+                if (_cityZIP == value)
+                {
+                    return;
+                }
+
+                _cityZIP = value;
+
+                var args = new PropertyChangedEventArgs(nameof(CityZIP));
+
+                PropertyChanged?.Invoke(this, args);
+            }
+        }
+        public string CountryCode
+        {
+            get => _countryCode;
+            set
+            {
+                if (_countryCode == value)
+                {
+                    return;
+                }
+
+                _countryCode = value;
+
+                var args = new PropertyChangedEventArgs(nameof(CountryCode));
+
+                PropertyChanged?.Invoke(this, args);
+            }
+        }
+
     }
 }

@@ -12,8 +12,6 @@ namespace SunnyXamarin
 		{
 			InitializeComponent();
 
-            AccountStore s = GoogleService.store;
-
             if (Application.Current.Properties["ProfilePicture"] != null)
                 imgProfilePicture.Source = Application.Current.Properties["ProfilePicture"].ToString();
 

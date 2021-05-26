@@ -69,5 +69,10 @@ namespace SunnyXamarin.Services
 
         }
 
+        public double Conversion_CelvinToCelzius(double calvin)
+        {
+            return (calvin - 273.15);
+        }
+
     }
 }

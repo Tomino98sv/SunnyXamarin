@@ -8,5 +8,8 @@ namespace SunnyXamarin.Services
         Task<WeatherModel> getWeatherByLocation(string longitude, string latitude);
 
         Task<WeatherModel> getWeatherByCity(string cityZip, string countryCode);
+
+        double Conversion_CelvinToCelzius(double celvin);
+
     }
 }

@@ -10,7 +10,7 @@ namespace SunnyXamarin
         {
             InitializeComponent();
 
-            SunnyXamarin.GoogleService.CreateAccountStore();
+            SunnyXamarin.GoogleService.GetAccountStore();
         }
 
         void OnGoogleLoginClick(object sender, EventArgs e)
